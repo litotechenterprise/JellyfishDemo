@@ -7,7 +7,7 @@ import streamlit as st
 from dotenv.main import load_dotenv
 load_dotenv()
 
-# st.title('Jellyfish Demo')
+st.title('Jellyfish Demo')
 
 
 def construct_index(directory_path):
@@ -46,13 +46,14 @@ def ask_ai():
         persist_dir='storage')
     index = load_index_from_storage(
         storage_context, index_id="vector_index")
-    while True:
-        # st.text_input("What do you want to ask? ")
-        question = input("What do you want to ask? ")
-        query_engine = index.as_query_engine()
-        response = query_engine.query(question)
-        display(Markdown(f"Response: <b>{response.response}</b>"))
-        print(response.response)
+    # while True:
+
+    question = st.text_input(
+        "What would you like to ask the Jellyfish Chatbot?")
+    query_engine = index.as_query_engine()
+    response = query_engine.query(question)
+    # display(Markdown(f"Response: <b>{response.response}</b>"))
+    st.write(response.response)
 
 
 construct_index("context_data/data")
