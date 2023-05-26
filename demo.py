@@ -50,10 +50,11 @@ def ask_ai():
 
     question = st.text_input(
         "What would you like to ask the Jellyfish Chatbot?")
+   # question = input("What would you like to ask the Jellyfish Chatbot?")
     query_engine = index.as_query_engine()
     response = query_engine.query(question)
-    # display(Markdown(f"Response: <b>{response.response}</b>"))
     st.write(response.response)
+    st.balloons()
 
 
 construct_index("context_data/data")
