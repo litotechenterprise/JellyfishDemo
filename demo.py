@@ -8,7 +8,7 @@ temperature = 0.5
 st.title('Jellyfish Demo')
 
 
-# @retry
+@retry
 def construct_index(directory_path):
     # set maximum input size
     max_input_size = 4096
@@ -40,7 +40,7 @@ def construct_index(directory_path):
     return index
 
 
-# @retry
+@retry
 def ask_ai():
     storage_context = StorageContext.from_defaults(
         persist_dir='storage')
@@ -48,10 +48,12 @@ def ask_ai():
         storage_context, index_id="vector_index")
     question = st.text_input(
         "What would you like to ask the Jellyfish Chatbot?")
-    query_engine = index.as_query_engine()
-    response = query_engine.query(question)
-    st.write(response.response)
-    st.balloons()
+    if question:
+        with st.spinner(f'Generating responses'):
+            query_engine = index.as_query_engine()
+            response = query_engine.query(question)
+            st.write(response.response)
+            st.balloons()
 
 
 construct_index("context_data/data")

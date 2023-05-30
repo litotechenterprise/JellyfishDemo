@@ -1,0 +1,7 @@
+llama-index
+streamlit
+langchain
+retrying
+watchdog
+python-dotenv
+openai
