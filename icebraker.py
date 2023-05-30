@@ -1,7 +1,6 @@
 from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
-import os
 from dotenv.main import load_dotenv
 information = """
 Hugh Marston Hefner (April 9, 1926 – September 27, 2017) was an American magazine publisher. He was the founder and editor-in-chief of Playboy magazine, a publication with revealing photographs and articles that provoked charges of obscenity.

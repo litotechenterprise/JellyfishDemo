@@ -2,7 +2,6 @@ from llama_index import SimpleDirectoryReader, LLMPredictor, PromptHelper, Servi
 from langchain import OpenAI
 from IPython.display import Markdown, display
 import streamlit as st
-import os
 from dotenv.main import load_dotenv
 load_dotenv()
 temperature = 0.5
