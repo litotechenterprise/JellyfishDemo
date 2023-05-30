@@ -1,13 +1,14 @@
 from llama_index import SimpleDirectoryReader, LLMPredictor, PromptHelper, ServiceContext, GPTVectorStoreIndex, load_index_from_storage, StorageContext
 from langchain import OpenAI
-from IPython.display import Markdown, display
 import streamlit as st
 from dotenv.main import load_dotenv
+from retrying import retry
 load_dotenv()
 temperature = 0.5
 st.title('Jellyfish Demo')
 
 
+# @retry
 def construct_index(directory_path):
     # set maximum input size
     max_input_size = 4096
@@ -39,6 +40,7 @@ def construct_index(directory_path):
     return index
 
 
+# @retry
 def ask_ai():
     storage_context = StorageContext.from_defaults(
         persist_dir='storage')
